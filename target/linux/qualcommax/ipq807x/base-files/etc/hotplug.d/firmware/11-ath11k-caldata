@@ -13,6 +13,7 @@ case "$FIRMWARE" in
 		CI_UBIPART="UBI_DEV"
 		caldata_extract_ubi "Factory" 0x1000 0x20000
 		;;
+	aliyun,ap8220|\
 	arcadyan,aw1000|\
 	buffalo,wxr-5950ax12|\
 	cmcc,rm2-6|\
