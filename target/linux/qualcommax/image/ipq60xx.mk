@@ -109,6 +109,21 @@ define Device/linksys_mr7500
 endef
 TARGET_DEVICES += linksys_mr7500
 
+define Device/jdcloud_re-cs-07
+	$(call Device/FitImage)
+	$(call Device/EmmcImage)
+	DEVICE_VENDOR := JDCloud
+	DEVICE_MODEL := ER1
+	DEVICE_DTS_CONFIG := config@cp03-c4
+	DEVICE_DTS := ipq6010-re-cs-07
+	SOC := ipq6018
+	DEVICE_PACKAGES := kmod-fs-ext4 mkf2fs f2fsck kmod-fs-f2fs
+	BLOCKSIZE := 64k
+	KERNEL_SIZE := 6144k
+	IMAGE/factory.bin := append-kernel | pad-to $${KERNEL_SIZE}  |  append-rootfs | append-metadata
+endefAdd commentMore actions
+TARGET_DEVICES += jdcloud_re-cs-07
+
 define Device/netgear_wax214
 	$(call Device/FitImage)
 	$(call Device/UbiFit)

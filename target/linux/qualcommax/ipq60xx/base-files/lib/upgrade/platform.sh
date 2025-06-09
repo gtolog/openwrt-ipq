@@ -142,6 +142,11 @@ platform_do_upgrade() {
 		fw_setenv auto_recovery yes
 		nand_do_upgrade "$1"
 		;;
+	jdcloud,re-cs-07)
+	  CI_KERNPART="0:HLOS"
+	  CI_ROOTPART="rootfs"
+	  emmc_do_upgrade "$1"
+	  ;;
 	tplink,eap610-outdoor|\
 	tplink,eap623od-hd-v1|\
 	tplink,eap625-outdoor-hd-v1)
@@ -163,4 +168,12 @@ platform_do_upgrade() {
 		default_do_upgrade "$1"
 		;;
 	esac
+}
+
+platform_copy_config() {
+  case "$(board_name)" in
+  jdcloud,re-cs-07)
+    emmc_copy_config
+    ;;
+  esac
 }

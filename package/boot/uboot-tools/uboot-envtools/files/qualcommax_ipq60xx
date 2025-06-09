@@ -19,6 +19,11 @@ linksys,mr7350|\
 linksys,mr7500)
 	ubootenv_add_mtd "u_env" "0x0" "0x40000" "0x20000"
 	;;
+jdcloud,re-cs-07)
+        mmcpart="$(find_mmc_part 0:APPSBLENV)"
+        [ -n "$mmcpart" ] && \Add commentMore actions
+            ubootenv_add_uci_config "$mmcpart" "0x0" "0x40000" "0x20000"
+	;;
 netgear,wax214|\
 netgear,wax610|\
 netgear,wax610y|\
